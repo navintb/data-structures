@@ -28,7 +28,7 @@ public abstract class SegmentTree {
             int mid = (start + end) / 2;
             build(node * 2, start, mid);
             build((node * 2) + 1, mid + 1, end);
-            tree[node] = (tree[2 * node] > tree[(2 * node) + 1]) ? tree[(2 * node) + 1] : tree[2 * node];
+            tree[node] = compare(tree[2 * node], tree[(2 * node) + 1]);;
         }
     }
 
@@ -57,7 +57,7 @@ public abstract class SegmentTree {
         int mid = (start + end) / 2;
         int a = query(node * 2, start, mid, l, r);
         int b = query((node * 2) + 1, mid + 1, end, l, r);
-        return a > b ? b : a;
+        return compare(a, b);
     }
 
     public int[] getTree() {
